@@ -5,13 +5,114 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Oxygen);
       @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
       @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
-      body { font-family: 'Droid Serif'; }
+      body { font-family: 'Oxygen'; }
       h1, h2, h3 {
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
+        line-height: 0.8em;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        -moz-border-radius: 5px;
+        -web-border-radius: 5px;
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #999999;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 50%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h1:last-of-type, .left-column h2:last-of-type, .left-column h3:last-child {
+        }
+      .right-column {
+        width: 50%;
+        float: right;
+        padding-top: 1em;
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
     </style>
@@ -19,233 +120,429 @@
   <body>
     <textarea id="source">
 
-class: center
+class: center, middle, inverse
+
+# How I Spent My Summer:
+# Europython 2014 Berlin
+
+####Filipp Kucheryavy
+
+####f_kucheryavy@wargaming.net
+
+---
+class: center, inverse
 
 # Download slides here:
 
 ![https://github.com/Friz-zy](./img/slides.png)
 
-https://friz-zy.github.io/europython2014/slides.html#1
-
+####https://friz-zy.github.io/europython2014/slides.html#1
 ---
-
-class: center, middle
-
-# How I Spent My Summer:
-# Europython 2014 Berlin
-
-Filipp Kucheryavy
-
-f_kucheryavy@wargaming.net
-
----
-
-# Agenda
-
-
-
-1. trends - как жить и что делать
-
-2. development - как мы можем это сделать
-
-3. testing - как  не выстрелить себе в ногу
-
-4. deployment - как донести это людям
-
-5. post production - как не дать людям выстрелить нам в ногу
-
----
-
-class: center
+class: center, inverse, middle
 # Trends
-
 ---
-
-class: center
+class: center, inverse
 # Trends
 ## Life after Snowden
 ####P2P + Encryption
 ![nsa](./img/nsa.png)
 ---
-
-class: center
+class: center, inverse
 # Trends
 ## Test Driven Development
 #### And
 ## Test Driven Infrastructure
 ![foo](./img/foo.png)
 ---
-
+class: inverse
 # .center[Trends]
 ## .center[Big Data]
-### Travis Oliphant
 
-The primary developer of the [NumPy](http://www.numpy.org/) package, and as a founding contributor of the [SciPy](www.scipy.org) package
+#### .center[Travis Oliphant | [Continuum Analytics](http://www.continuum.io/)]
 
-### [Continuum Analytics](http://www.continuum.net/)
-* [anaconda](https://store.continuum.io/cshop/anaconda/)
+<br />
 
-* [wakari](https://wakari.io/)
-
-* [binstar](https://binstar.org/)
-
+.left-column[
+.left[![Travis](./img/toliphant.png)]
+]
+.right-column[
+.right[![continuum](./img/continuum_analytics_logo_s.png)]
+]
 ---
-
 class: center
 # Trends
 ## Clouds
 ![cloud](./img/cloud.jpeg)
 ---
-
+class: inverse
 # .center[Development]
 
-### Web
-* [Full Stack Python](http://www.fullstackpython.com/)
+.left-column[## Web]
+---
+class: inverse
+# .center[Development]
 
-Full Stack Python is an open book that explains each Python web application stack layer and provides the best web resources for those topics.
+.left-column[## Web]
+.right-column[
+* ####[Full Stack Python](http://www.fullstackpython.com/)
 
-* [Morepath](http://morepath.readthedocs.org/en/latest/)
+Full Stack Python is an open book that explains each Python web application stack layer and provides the best web resources for those topics
+
+]
+---
+class: inverse
+# .center[Development]
+
+.left-column[## Web]
+.right-column[
+* ####[Full Stack Python](http://www.fullstackpython.com/)
+
+* ####[Morepath](http://morepath.readthedocs.org/en/latest/)
 
 Morepath is an Python WSGI microframework. It uses routing, but the routing is to models. Morepath is model-driven and flexible, which makes it expressive
 
-* [Eve](http://python-eve.org/)
-
-Python REST API Framework
-
+]
 ---
-
+class: inverse
 # .center[Development]
 
-### Frontend
-* [Jigna](https://github.com/enthought/jigna)
+.left-column[## Web]
+.right-column[
+* ####[Full Stack Python](http://www.fullstackpython.com/)
+
+* ####[Morepath](http://morepath.readthedocs.org/en/latest/)
+
+* ####[Eve](http://python-eve.org/)
+
+Python REST API Framework
+]
+---
+class: inverse
+# .center[Development]
+.left-column[
+## Web
+## Frontend
+]
+---
+class: inverse
+# .center[Development]
+.left-column[
+## Web
+## Frontend
+]
+.right-column[
+* ####[Jigna](https://github.com/enthought/jigna)
 
 Jigna is a bridge between Traits and the HTML, CSS and Javascript world
 
-* [PySide](http://qt-project.org/wiki/PySide)
+]
+---
+class: inverse
+# .center[Development]
+.left-column[
+## Web
+## Frontend
+]
+.right-column[
+* ####[Jigna](https://github.com/enthought/jigna)
+
+* ####[PySide](http://qt-project.org/wiki/PySide)
 
 The PySide project provides LGPL-licensed Python bindings for the Qt
 
-* [Pythonista](http://omz-software.com/pythonista/)
+]
+---
+class: inverse
+# .center[Development]
+.left-column[
+## Web
+## Frontend
+]
+.right-column[
+* ####[Jigna](https://github.com/enthought/jigna)
+
+* ####[PySide](http://qt-project.org/wiki/PySide)
+
+* ####[Pythonista](http://omz-software.com/pythonista/)
 
 Pythonista is an integrated development environment for writing Python™ scripts on iOS
 
-* [Kivy](http://kivy.org/#home)
+]
+---
+class: inverse
+# .center[Development]
+.left-column[
+## Web
+## Frontend
+]
+.right-column[
+* ####[Jigna](https://github.com/enthought/jigna)
+
+* ####[PySide](http://qt-project.org/wiki/PySide)
+
+* ####[Pythonista](http://omz-software.com/pythonista/)
+
+* ####[Kivy](http://kivy.org/#home)
 
 Kivy - Open source Python library for rapid development of applications that make use of innovative user interfaces, such as multi-touch apps
-
+]
 ---
-
+class: inverse
 # .center[Development]
+.left-column[
+## Web
+## Frontend
+## Backend
+]
+---
+class: inverse
+# .center[Development]
+.left-column[
+## Web
+## Frontend
+## Backend
+]
+.right-column[
+* ####[Storm](https://storm.incubator.apache.org/) and [Kafka](https://kafka.apache.org/)
 
-### Backend
-* Using python with [Storm](https://storm.incubator.apache.org/) and [Kafka](https://kafka.apache.org/)
+Apache Kafka - Distributed messaging system
 
-Apache Kafka : Distributed messaging system
+Apache Storm - Real Time Message Processing 
 
-Apache Storm : Real Time Message Processing 
+]
+---
+class: inverse
+# .center[Development]
+.left-column[
+## Web
+## Frontend
+## Backend
+]
+.right-column[
+* ####[Storm](https://storm.incubator.apache.org/) and [Kafka](https://kafka.apache.org/)
 
-* [Celery](http://www.celeryproject.org/)
+* ####[Celery](http://www.celeryproject.org/)
 
-Celery: Distributed Task Queue
+Celery - Distributed Task Queue
 
-* [Vumi](https://github.com/praekelt/vumi)
+]
+---
+class: inverse
+# .center[Development]
+.left-column[
+## Web
+## Frontend
+## Backend
+]
+.right-column[
+* ####[Storm](https://storm.incubator.apache.org/) and [Kafka](https://kafka.apache.org/)
+
+* ####[Celery](http://www.celeryproject.org/)
+
+* ####[Vumi](https://github.com/praekelt/vumi)
 
 Messaging engine for the delivery of SMS, Star Menu and chat messages to diverse audiences in emerging markets and beyond
-
+]
 ---
-
+class: inverse
 # .center[Development]
-
-### Modules
-* [Gevent](https://sdiehl.github.io/gevent-tutorial/)
+.left-column[
+## Web
+## Frontend
+## Backend
+## Modules
+]
+---
+class: inverse
+# .center[Development]
+.left-column[
+## Web
+## Frontend
+## Backend
+## Modules
+]
+.right-column[
+* ####[Gevent](https://sdiehl.github.io/gevent-tutorial/)
 
 Gevent is a coroutine-based Python networking library that uses greenlet to provide a high-level synchronous API on top of the libev event loop
 
-* [Jython](http://www.jython.org/)
+]
+---
+class: inverse
+# .center[Development]
+.left-column[
+## Web
+## Frontend
+## Backend
+## Modules
+]
+.right-column[
+* ####[Gevent](https://sdiehl.github.io/gevent-tutorial/)
+
+* ####[Jython](http://www.jython.org/)
 
 Jython is an implementation of the language Python seamlessly integrated with the Java platform
-
+]
 ---
-
+class: inverse
 # .center[Testing]
-
-### Modules
-* [Pytest](http://pytest.org/latest/)
+.left-column[## Modules]
+---
+class: inverse
+# .center[Testing]
+.left-column[## Modules]
+.right-column[
+* ####[Pytest](http://pytest.org/latest/)
 
 A mature full-featured Python testing tool
 
-* [Doctest](https://docs.python.org/2/library/doctest.html)
+]
+---
+class: inverse
+# .center[Testing]
+.left-column[## Modules]
+.right-column[
+* ####[Pytest](http://pytest.org/latest/)
+
+* ####[Doctest](https://docs.python.org/2/library/doctest.html)
 
 Writing tutorial documentation for a package with examples
 
-* [Pythontesting.net](http://pythontesting.net)
+]
+---
+class: inverse
+# .center[Testing]
+.left-column[## Modules]
+.right-column[
+* ####[Pytest](http://pytest.org/latest/)
+
+* ####[Doctest](https://docs.python.org/2/library/doctest.html)
+
+* ####[Pythontesting.net](http://pythontesting.net)
 
 Python Test Frameworks and Strategies
 
-### Tools
-* [Nix](http://nixos.org/nix/)
+]
+---
+class: inverse
+# .center[Testing]
+.left-column[
+## Modules
+## Tools
+]
+---
+class: inverse
+# .center[Testing]
+.left-column[
+## Modules
+## Tools
+]
+.right-column[
+* ####[Nix](http://nixos.org/nix/)
 
 The Purely Functional Package Manager
 
+]
 ---
-
+class: inverse
 # .center[Deployment]
-
-### Tools
-* [Ansible](http://www.ansible.com/home)
+.left-column[## Tools]
+---
+class: inverse
+# .center[Deployment]
+.left-column[## Tools]
+.right-column[
+* ####[Ansible](http://www.ansible.com/home)
 
 Ansible is the simplest way to automate IT
 
-* [Fabric](http://www.fabfile.org/)
+]
+---
+class: inverse
+# .center[Deployment]
+.left-column[## Tools]
+.right-column[
+* ####[Ansible](http://www.ansible.com/home)
+
+* ####[Fabric](http://www.fabfile.org/)
 
 Fabric is a library and cli for streamlining the use of SSH for application deployment or systems administration tasks
 
-* [Docker](https://www.docker.com/)
+]
+---
+class: inverse
+# .center[Deployment]
+.left-column[## Tools]
+.right-column[
+* ####[Ansible](http://www.ansible.com/home)
+
+* ####[Fabric](http://www.fabfile.org/)
+
+* ####[Docker](https://www.docker.com/)
 
 Docker - An open platform for distributed applications for developers and sysadmins
 
-* [Openstack](http://www.openstack.org/)
+]
+---
+class: inverse
+# .center[Deployment]
+.left-column[## Tools]
+.right-column[
+* ####[Ansible](http://www.ansible.com/home)
+
+* ####[Fabric](http://www.fabfile.org/)
+
+* ####[Docker](https://www.docker.com/)
+
+* ####[Openstack](http://www.openstack.org/)
 
 Open source software for building private and public clouds
 
+]
 ---
-
+class: inverse
 # .center[Post Production]
 
-### Logging
-* [Logstash](http://logstash.net/) + [Elasticsearch](http://www.elasticsearch.org) + [Kibana](http://www.elasticsearch.org/guide/en/kibana/current/_introduction.html)
+.left-column[## Logging]
+---
+class: inverse
+# .center[Post Production]
+
+.left-column[## Logging]
+.right-column[
+* ####[Logstash](http://logstash.net/) + [Elasticsearch](http://www.elasticsearch.org) + [Kibana](http://www.elasticsearch.org/guide/en/kibana/current/_introduction.html)
 
 Search & analyze any data — freaky fast - The ELK Stack
 
-* [Graphite](http://graphite.wikidot.com)
+]
+---
+class: inverse
+# .center[Post Production]
+
+.left-column[## Logging]
+.right-column[
+* ####[Logstash](http://logstash.net/) + [Elasticsearch](http://www.elasticsearch.org) + [Kibana](http://www.elasticsearch.org/guide/en/kibana/current/_introduction.html)
+
+* ####[Graphite](http://graphite.wikidot.com)
 
 Graphite - Scalable Realtime Graphing 
 
+]
 ---
-
-# .center[what to do if I missed it? =(]
-
-### Materials
-* [youtube.com/playlist?list=UUadZ6_NWdCN6YolgQdfV8Pg](https://www.youtube.com/playlist?list=UUadZ6_NWdCN6YolgQdfV8Pg)
-
-Full list of videos
-
-* [ep2014.europython.eu/en/schedule/schedule](https://ep2014.europython.eu/en/schedule/schedule/#day1)
-
-Description of lectures + video
-
-### Another conferences
-* [2014.pythonbrasil.org.br](http://2014.pythonbrasil.org.br/)
-
-Python Brasil 2014
-
-* [lanyrd.com/topics/python](http://lanyrd.com/topics/python/)
-
-Thousands of them!
-
+class: inverse, center, middle
+# what to do if I missed it? =(
 ---
+class: inverse, center, middle
+#[Python Brasil 2014](http://2014.pythonbrasil.org.br/)
 
-class: center
+.footnote[[Thousands of them!](http://lanyrd.com/topics/python/)]
+---
+class: inverse, center, middle
+# [ep2014.europython.eu](https://ep2014.europython.eu/en/schedule/schedule/#day1)
+
+.footnote[[you << youtube](https://www.youtube.com/playlist?list=UUadZ6_NWdCN6YolgQdfV8Pg)]
+---
+class: center, inverse
 #thank you, questions?
 
 ## fork me on github
