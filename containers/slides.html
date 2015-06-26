@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>containers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Oxygen);
+
+      body { font-family: 'Oxygen'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+        line-height: 0.8em;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        -moz-border-radius: 5px;
+        -web-border-radius: 5px;
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #999999;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 49%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h1:last-of-type, .left-column h2:last-of-type, .left-column h3:last-child {
+        }
+      .right-column {
+        width: 49%;
+        float: right;
+        padding-top: 1em;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: center, middle, inverse
+
+# containers
+
+# we need to go deeper
+
+####Filipp Kucheryavy
+
+####filipp.s.frizzy@gmail.com
+
+.footnote[[*all pink lettering clickable](https://github.com/Friz-zy)]
+---
+class: center, inverse, middle
+![](./img/motivation.jpeg)
+---
+class: inverse,
+# .center[Agenda]
+
+.footnote[![](./img/crossroads.png)]
+---
+class: inverse
+# .center[Agenda]
+.right-column[
+## [isolation](https://friz-zy.github.io/containers/kickstart/slides.html#3)
+]
+.footnote[![](./img/crossroads.png)]
+---
+class: inverse
+# .center[Agenda]
+
+.right-column[
+## [isolation](https://friz-zy.github.io/containers/kickstart/slides.html#3)
+## [a new rise of containers](https://friz-zy.github.io/containers/kickstart/slides.html#3)
+]
+.footnote[![](./img/crossroads.png)]
+---
+class: inverse
+# .center[Agenda]
+
+.right-column[
+## [isolation](https://friz-zy.github.io/containers/kickstart/slides.html#3)
+## [a new rise of containers](https://friz-zy.github.io/containers/kickstart/slides.html#3)
+## [under the hood](https://friz-zy.github.io/containers/kickstart/slides.html#3)
+]
+.footnote[![](./img/crossroads.png)]
+---
+class: center, inverse
+# isolation
+
+![](./img/cats.jpg)
+---
+class: center
+# isolation
+
+![](./img/levels.png)
+---
+class: inverse
+# .center[isolation]
+
+## .center[Sandbox]
+
+```python
+glob = { '__builtins__':{ 'xrange':xrange } }
+```
+
+
+### Use Another Runtime
+
+* ## PyPy
+* ## Java
+* ## CLR/.NET
+
+---
+class: inverse
+# .center[isolation]
+
+## .center[escape from sandbox]
+
+```python
+classes = {}.__class__.__base__.__subclasses__()
+for i, ii in enumerate(classes):
+    print i, ii
+59 <class 'warnings.catch_warnings'>
+b = classes[59]()._module.__builtins__
+m = b['__import__']('os')
+m.system("echo 'Hello, python!'")
+Hello, python!
+0
+```
+
+###[escape python sandbox](https://www.google.by/search?q=escape+python+sandbox)
+Результатов: примерно 132 000 (0,22 сек.)
+
+###[escape java sandbox](https://www.google.by/search?q=escape+java+sandbox)
+Результатов: примерно 214 000 (0,21 сек.)
+---
+class: inverse
+# .center[isolation]
+
+## .center[[Linux Security Modules](https://en.wikipedia.org/wiki/Linux_Security_Modules)]
+
+.left-column[
+* ## [AppArmor](https://wiki.ubuntu.com/AppArmor)
+* ## [SELinux](http://habrahabr.ru/company/kingservers/blog/209644/)
+* ## [Tomoyo](https://wiki.archlinux.org/index.php/TOMOYO_Linux_%28%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9%29)
+* ## [Smack](http://www.ibm.com/developerworks/library/l-lxc-security/)
+]
+.right-column[
+![](./img/lsm1.jpg)
+]
+---
+class: inverse
+# .center[isolation]
+
+## .center[[Linux Security Modules](https://en.wikipedia.org/wiki/Linux_Security_Modules)]
+
+.left-column[
+```bash
+# apparmor
+/usr/sbin/in.ftpd {
+#include <immunix-standard/base>
+#include <immunix-standard/nameservice>
+#include <immunix-standard/authentication>
+#include <user-custom/ftpd>
+/    r,
+/dev/urandom    r,
+/etc/fstab    r,
+/etc/ftpaccess    r,
+...
+```
+]
+.right-column[
+```bash
+# selinux
+fdef(`ftpd_daemon', `
+define(`ftpd_is_daemon', `')
+') dnl end ftpd_daemon
+ifdef(`ftpd_is_daemon', `
+rw_dir_create_file(ftpd_t, var_lock_t)
+allow ftpd_t ftp_port_t:tcp_socket name_bind;
+allow ftpd_t self:unix_dgram_socket { sendto };
+can_tcp_connect(userdomain, ftpd_t)
+', `
+...
+```
+]
+
+---
+class: inverse
+# .center[isolation]
+
+## .center[escape from lsm]
+.left-column[
+* ## default settings
+* ## wrong settings
+* ## disabled state
+]
+.right-column[
+###[escape python apparmor](https://www.google.by/search?q=escape+python+apparmor)
+Результатов: примерно 15 200
+
+###[escape python selinux](https://www.google.by/search?q=escape+python+selinux)
+Результатов: примерно 244 000
+]
+---
+class: inverse
+# .center[isolation]
+
+## .center[[Operating-system-level virtualization](https://en.wikipedia.org/wiki/Operating-system-level_virtualization)]
+
+.left-column[
+## Unix
+
+* ## [Chroot](https://ru.wikipedia.org/wiki/Chroot)
+* ## [FreeBSD Jail](https://ru.wikipedia.org/wiki/FreeBSD_Jail)
+* ## [Solaris Containers](https://ru.wikipedia.org/wiki/Solaris_Containers)
+* ## [OpenVZ](https://ru.wikipedia.org/wiki/OpenVZ)
+* ## [LXC](https://ru.wikipedia.org/wiki/LXC)
+]
+.right-column[
+## Windows
+
+* ## [Virtuozzo](https://en.wikipedia.org/wiki/Virtuozzo)
+* ## [Sandboxie](https://ru.wikipedia.org/wiki/Sandboxie)
+* ## [ICore Virtual Accounts](https://en.wikipedia.org/wiki/ICore_Virtual_Accounts)
+]
+---
+class: inverse
+# .center[isolation]
+
+## .center[escape from container]
+.left-column[
+* ## links outsade
+* ## root privileges, setuid bit
+* ## extra privileges like network or mount
+* ## default settings
+* ## kernel exploits
+]
+.right-column[
+###[escape lxc](https://www.google.by/search?q=escape+lxc)
+Результатов: примерно 104 000
+
+###[lxc security](https://www.google.by/search?q=lxc+security)
+Результатов: примерно 303 000
+]
+---
+class: inverse
+# .center[isolation]
+
+## .center[[Hardware virtualization](https://en.wikipedia.org/?title=Hardware_virtualization)]
+
+.left-column[
+## Software
+
+* ## [VMware](https://www.vmware.com/ru)
+* ## [Hyper-V](https://ru.wikipedia.org/wiki/Hyper-V)
+* ## [Xen](https://ru.wikipedia.org/wiki/Xen)
+* ## [KVM](https://ru.wikipedia.org/wiki/Kernel-based_Virtual_Machine)
+* ## [Qemu](https://ru.wikipedia.org/wiki/QEMU)
+]
+.right-column[
+## Hardware
+
+* ## [Intel VT](http://www.intel.ru/content/www/ru/ru/virtualization/virtualization-technology/intel-virtualization-technology.html)
+* ## [AMD-V](http://www.amd.com/ru-ru/solutions/servers/virtualization)
+]
+---
+class: inverse
+# .center[isolation]
+
+## .center[escape from hypervisor]
+
+.left-column[
+## hardware exploits
+
+VENOM, CVE-2015-3456, is a security vulnerability in the virtual floppy drive code used by many computer virtualization platforms.
+]
+.right-column[
+###[escape xen](https://www.google.by/search?q=escape+xen)
+Результатов: примерно 381 000
+
+###[escape vmware](https://www.google.by/search?q=escape+vmware)
+Результатов: примерно 410 000
+]
+---
+class: center, inverse
+# a new rise of containers
+
+![](./img/rise.jpg)
+---
+class: center
+# a new rise of containers
+
+![](./img/container_vs_vm.jpg)
+---
+class: inverse
+# .center[a new rise of containers]
+
+## .center[era of docker]
+
+.left-column[
+* ## images
+* ## layers
+* ## isolation
+]
+.right-column[
+![](./img/docker.png)
+]
+---
+class: center
+# a new rise of containers
+
+## standards
+
+![](./img/standards.jpeg)
+---
+class: inverse
+# .center[a new rise of containers]
+
+## .center[standards]
+
+.left-column[
+* ## [docker](https://docs.docker.com/)
+* ## [appc](https://github.com/appc/spec)
+* ## [projectatomic](https://github.com/projectatomic/nulecule)
+* ## [vagga](https://vagga.readthedocs.org/en/latest/vagga_features.html)
+* ## [lxc](https://linuxcontainers.org/lxc/documentation/)
+
+## etc...
+]
+.right-column[
+## One tool for rule them all
+
+## [OPEN CONTAINER PROJECT](http://www.opencontainers.org/)
+]
+---
+class: center, inverse
+# under the hood
+
+![](./img/cat_under_hood.jpg)
+---
+class:
+# .center[under the hood]
+
+.left-column[
+## [namespaces](http://man7.org/linux/man-pages/man7/namespaces.7.html)
+
+* ### Файлы
+* ### Пользователи и группы
+* ### Дерево процессов
+* ### Сеть
+* ### Доменное имя
+* ### Взаимодействие процессов
+
+]
+.right-column[
+## [cgroups](https://ru.wikipedia.org/wiki/Cgroups)
+
+* ### ограничение ресурсов
+* ### приоритезация
+* ### учёт
+* ### изоляцию
+* ### управление
+
+]
+---
+class: inverse
+# .center[under the hood]
+
+.center[![](./img/magic.jpeg)]
+
+```c
+#include <sched.h>
+
+int clone(int (*fn)(void *), void *child_stack, int flags, void *arg);
+
+_syscall2(int, clone, int, flags, void *, child_stack) 
+```
+---
+class: inverse
+# .center[under the hood]
+
+.center[![](./img/magic.jpeg)]
+
+```python
+import signal
+from ctypes import *
+libc = CDLL("libc.so.6")
+"""Import libc.so.6 as libc"""
+
+STACK_SIZE = 1024 * 1024
+"""#define STACK_SIZE (1024 * 1024)"""
+
+def childFunc():
+    print "hello, meetup!"
+
+flags = 2080505856 # all 6 namespaces
+childFunc = CFUNCTYPE(c_int)(childFunc)
+child_stack = c_char_p(" " * STACK_SIZE)
+child_stack_pointer = c_void_p(cast(child_stack, c_void_p).value + STACK_SIZE)
+
+child_pid = libc.clone(childFunc, child_stack_pointer, flags | signal.SIGCHLD)
+```
+---
+class: inverse
+# .center[under the hood]
+
+## .center[[pyspaces](https://github.com/Friz-zy/pyspaces)]
+
+```python
+import os
+from pyspaces import Container
+
+cmd = "mount -t proc proc /proc; ps ax"
+c = Container(target=os.execvp, args=('bash', ('bash', '-c', cmd)),
+              uid_map='0 1000 1',
+              newpid=True, newuser=True, newns=True
+              )
+c.start()
+print("PID of child created by clone() is %ld\n" % c.pid)
+c.join()
+print("Child returned: pid %s, status %s" % (c.pid, c.exitcode))
+```
+
+```bash
+PID of child created by clone() is 15978
+
+PID TTY      STAT   TIME COMMAND
+1   pts/19   S+     0:00 bash -c mount -t proc proc /proc; ps ax
+3   pts/19   R+     0:00 ps ax
+
+Child returned: pid 15978, status 0
+```
+
+---
+class: center, inverse, middle
+# Thats All
+
+## thank you
+
+## fork me on github
+#### https://github.com/Friz-zy
+
+## Download slides here:
+####https://friz-zy.github.io/containers/kickstart/slides.html
+
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
